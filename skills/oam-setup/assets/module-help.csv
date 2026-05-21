@@ -1,0 +1,9 @@
+module,skill,display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs
+Operational Analysis Method,oam-setup,Setup,SU,"Install or configure OAM: scaffold memory, register help, collect config.",configure,[-H],anytime,,,false,,module config
+Operational Analysis Method,oam-agent-owen,Owen - Orchestrator,OW,"Front door: mode detection, routing, first-run onboarding, party mode.",intake,,anytime,,,false,oam_output_folder,routing / onboarded profile
+Operational Analysis Method,oam-agent-diana,Diana - Diagnostic Analyst,DI,"Incremental ingestion, cross-document reconciliation, evidence base.",ingest,,anytime,,oam-agent-helena:design,false,oam_output_folder,evidence base
+Operational Analysis Method,oam-agent-helena,Helena - Analytical Architect,HE,"Scope, KPIs, hypotheses, taxonomy, allocation methodology, workplan.",design,,anytime,oam-agent-diana:ingest,oam-agent-sofia:execute,false,oam_output_folder,taxonomy + analysis design
+Operational Analysis Method,oam-agent-sofia,Sofia - Senior Analyst,SO,"Section execution, confidence labeling, adversarial review, report assembly.",execute,,anytime,oam-agent-helena:design,,false,oam_output_folder,living-dialogue report
+Operational Analysis Method,oam-quick-analysis,Quick Analysis,QA,"Single-pass analysis for a simple operational question.",quick,,anytime,,,false,oam_output_folder,concise report
+Operational Analysis Method,oam-adversarial-review,Adversarial Review,AR,"Constitution quality gate: general cynical pass plus the Constitution checklist.",review,[depth],anytime,,,false,oam_output_folder,findings report
+Operational Analysis Method,oam-format-delivery,Format and Delivery,FD,"Re-render a finished analysis for a target audience without altering substance.",format,[audience],anytime,,,false,oam_output_folder,audience rendering

@@ -1,0 +1,47 @@
+code: oam
+name: "Operational Analysis Method"
+description: "A standalone BMad module that brings the BMad Method's rigor to operational and analytical work - turning scattered operational data into structured, defensible analyses through diagnosis, planning, structuring, and execution with specialized agents and adversarial review."
+module_version: 1.0.0
+default_selected: false
+module_greeting: >
+  Operational Analysis Method (OAM) is ready. Start with Owen, the orchestrator -
+  he detects the right mode and routes you to the right specialist, or onboards your
+  first profile on a fresh project. Power users can summon Diana (diagnostic),
+  Helena (analytical design), or Sofia (execution & delivery) directly, or run a
+  quick one-pass analysis. Re-run setup anytime to reconfigure.
+
+oam_output_folder:
+  prompt: "Where should OAM deliverables (evidence base, report, decision log, actions) be saved?"
+  default: "{output_folder}/oam/{profile}/{analysis}"
+
+default_profile:
+  prompt: "Default memory profile name? (leave as 'default' to onboard a fresh one on first run)"
+  default: "default"
+  user_setting: true
+
+agents:
+  - code: owen
+    name: Owen
+    title: Orchestrator
+    icon: 🧭
+    description: "Orchestrator and front door for OAM - detects mode (structuring/recurring, full/quick), routes to the right specialist or quick track, runs first-run onboarding, and hosts party mode."
+  - code: diana
+    name: Diana
+    title: Diagnostic Analyst
+    icon: 🔍
+    description: "Diagnostic analyst - incremental ingestion of messy mixed-format documents, automatic cross-document reconciliation, and a fully-sourced evidence base."
+  - code: helena
+    name: Helena
+    title: Analytical Architect
+    icon: 📐
+    description: "Analytical architect - fuses planning (scope, KPIs, hypotheses) and structuring (cost taxonomy, allocation methodology, workplan); owns the durable taxonomy.md."
+  - code: sofia
+    name: Sofia
+    title: Senior Analyst
+    icon: ✍️
+    description: "Senior analyst - section-by-section execution, claim-level confidence labeling, adversarial review, and assembly of the signature living-dialogue report; distills lessons back to memory."
+
+directories:
+  - "{project-root}/_bmad/memory/oam"
+  - "{project-root}/_bmad/memory/oam/daily"
+  - "{project-root}/_bmad/memory/oam/profiles"

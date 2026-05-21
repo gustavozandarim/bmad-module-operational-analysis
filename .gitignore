@@ -1,0 +1,60 @@
+# =============================================================================
+# bmad-module-operational-analysis — .gitignore
+# This repo ships ONLY the OAM module. The surrounding directory is a full BMad
+# install; the framework itself is excluded here (it comes from BMAD-METHOD).
+# =============================================================================
+
+# --- BMad framework install (NOT part of this module) ---
+/.claude/
+/.agents/
+/docs/
+/operations-idea.md
+
+# --- Analysis deliverables / build output (never ships) ---
+/_bmad-output/
+
+# --- _bmad/: ship ONLY the OAM module's law + orientation files ---
+# Ignore the whole framework install under _bmad/, then re-include the OAM
+# memory root's shipped files. User/runtime data under it stays ignored.
+/_bmad/*
+!/_bmad/memory/
+/_bmad/memory/*
+!/_bmad/memory/oam/
+# Within the OAM memory tree: never ship user profile data or session logs.
+/_bmad/memory/oam/profiles/
+/_bmad/memory/oam/daily/
+# (Kept, because not matched above:
+#   _bmad/memory/oam/analytical-integrity-constitution.md
+#   _bmad/memory/oam/module-conventions.md
+#   _bmad/memory/oam/index.md
+#   _bmad/memory/oam/lessons.md)
+
+# --- User / runtime data ---
+/data/
+/uploads/
+
+# --- Secrets / credentials ---
+.env
+.env.*
+*.pem
+*.key
+*credentials*
+*secret*
+
+# --- Python artifacts ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# --- OS artifacts ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editor artifacts ---
+.vscode/
+.idea/
+*.swp

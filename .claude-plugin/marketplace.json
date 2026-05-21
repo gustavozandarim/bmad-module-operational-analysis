@@ -1,0 +1,41 @@
+{
+  "name": "oam",
+  "owner": {
+    "name": "Gustavo Zandarim",
+    "url": "https://github.com/gustavozandarim"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/gustavozandarim/bmad-module-operational-analysis",
+  "repository": "https://github.com/gustavozandarim/bmad-module-operational-analysis",
+  "keywords": [
+    "bmad",
+    "bmad-module",
+    "operational-analysis",
+    "cost-analysis",
+    "kpi",
+    "variance",
+    "analytics"
+  ],
+  "plugins": [
+    {
+      "name": "oam",
+      "source": "./",
+      "description": "A standalone BMad module that brings the BMad Method's rigor to operational and analytical work - turning scattered operational data into structured, defensible analyses through diagnosis, planning, structuring, and execution with specialized agents and adversarial review.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Gustavo Zandarim",
+        "url": "https://github.com/gustavozandarim"
+      },
+      "skills": [
+        "./skills/oam-agent-owen",
+        "./skills/oam-agent-diana",
+        "./skills/oam-agent-helena",
+        "./skills/oam-agent-sofia",
+        "./skills/oam-adversarial-review",
+        "./skills/oam-format-delivery",
+        "./skills/oam-quick-analysis",
+        "./skills/oam-setup"
+      ]
+    }
+  ]
+}
