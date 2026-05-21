@@ -29,15 +29,14 @@ This installs BMM and the OAM custom module, placing the OAM skills where your t
 
 OAM's agents use emoji icons. On a Windows console using the legacy **cp1252** encoding, the core resolver script crashes when it serializes an emoji. The agents fall back to manual resolution (so they still work), but you'll see a traceback each launch until you fix it.
 
-Edit `_bmad/scripts/resolve_customization.py` and add a UTF-8 guard immediately before the final `sys.stdout.write(...)`:
+Edit `_bmad/scripts/resolve_customization.py` and add a self-contained UTF-8 guard at the **top of `main()`**, before any stdout write — no environment variable needed:
 
 ```python
-try:
-    sys.stdout.reconfigure(encoding="utf-8")
-except (AttributeError, ValueError):
-    pass
-
-sys.stdout.write(json.dumps(output, indent=2, ensure_ascii=False) + "\n")
+def main():
+    # Windows consoles default to cp1252, which cannot encode emoji icons.
+    if sys.platform == "win32":
+        sys.stdout.reconfigure(encoding="utf-8")
+    ...
 ```
 
 Or, without editing code, set the environment variable before each session:

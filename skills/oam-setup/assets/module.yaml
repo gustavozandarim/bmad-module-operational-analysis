@@ -1,7 +1,7 @@
 code: oam
 name: "Operational Analysis Method"
 description: "A standalone BMad module that brings the BMad Method's rigor to operational and analytical work - turning scattered operational data into structured, defensible analyses through diagnosis, planning, structuring, and execution with specialized agents and adversarial review."
-module_version: 1.0.0
+module_version: 1.0.1
 default_selected: false
 module_greeting: >
   Operational Analysis Method (OAM) is ready. Start with Owen, the orchestrator -

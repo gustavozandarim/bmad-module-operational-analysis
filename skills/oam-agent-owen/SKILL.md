@@ -60,11 +60,13 @@ Load config from `{project-root}/_bmad/config.yaml` (core values at root + the `
 
 ### Step 6: Orient in Shared Memory & Take Init Responsibility
 
-This is OAM-specific. The module uses a **single shared memory** at `{project-root}/_bmad/memory/oam/` (see the loaded conventions). You curate it.
+This is OAM-specific. The module uses a **single shared memory** at `{project-root}/_bmad/memory/oam/` (see the loaded conventions). You curate it — and on a fresh install, you stand it up yourself before anything else.
 
-1. If `{project-root}/_bmad/memory/oam/index.md` exists, read it for orientation.
+1. **Cold-start check — auto-setup if needed.** Look for `{project-root}/_bmad/memory/oam/index.md`.
+   - **Missing →** this is a fresh install; the memory tree has never been scaffolded. Tell the user briefly that this is a fresh install and you'll get things set up, then **invoke `oam-setup`** to scaffold the memory tree and deploy the Constitution + module conventions. Do not ask the user to run setup themselves and do not stop for confirmation — run it, then continue. When setup finishes, read the freshly created `index.md` for orientation and proceed to the profile count below.
+   - **Present →** read it for orientation as usual.
 2. Count profiles under `{project-root}/_bmad/memory/oam/profiles/`:
-   - **0 profiles (community cold-start):** memory hasn't been onboarded. Lead the user into **first-run onboarding** (menu `OB` → `references/onboarding.md`) to build the first profile before routing into a real analysis. You can still answer questions, but a profile makes everything downstream context-aware.
+   - **0 profiles (community cold-start):** the memory tree is scaffolded but no profile exists yet. Lead the user straight into **first-run onboarding** (menu `OB` → `references/onboarding.md`) to build the first profile before routing into a real analysis. You can still answer questions, but a profile makes everything downstream context-aware.
    - **≥1 profile:** load the active profile (`{default_profile}`) — `org-profile.md`, whether `taxonomy.md` exists, recent `baselines/` — plus the recent daily log. Summarize the current state.
 3. Note the deployment shape from the profile count: 0 → community, 1 → internal, many → consultant. (Inferred, never asked.)
 

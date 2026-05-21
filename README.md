@@ -1,6 +1,6 @@
 # Operational Analysis Method (OAM)
 
-![version](https://img.shields.io/badge/version-1.0.0-blue)
+![version](https://img.shields.io/badge/version-1.0.1-blue)
 ![BMad module](https://img.shields.io/badge/BMad-module-6E40C9)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![status](https://img.shields.io/badge/validated-VM%20PASS-brightgreen)
@@ -119,16 +119,15 @@ See **[INSTALL.md](./INSTALL.md)** for prerequisites, the Windows post-install f
 
 OAM agents have emoji icons (🧭 🔍 📐 ✍️). The BMad resolver script `_bmad/scripts/resolve_customization.py` writes JSON to stdout with `ensure_ascii=False`; on a **Windows console using the legacy cp1252 encoding**, that crashes (`UnicodeEncodeError`) when it hits an emoji. Agents have a built-in fallback (they resolve their config manually if the script fails), so activation still works — but you'll see a traceback on every launch until you apply the fix.
 
-**Fix (recommended)** — add a UTF-8 guard right before the final `sys.stdout.write(...)` in `_bmad/scripts/resolve_customization.py`:
+**Fix (recommended)** — add a self-contained UTF-8 guard at the **top of `main()`** in `_bmad/scripts/resolve_customization.py`, before any stdout write. This needs no environment variable and no per-launch improvisation:
 
 ```python
-# Windows consoles default to cp1252, which cannot encode emoji icons.
-try:
-    sys.stdout.reconfigure(encoding="utf-8")
-except (AttributeError, ValueError):
-    pass
-
-sys.stdout.write(json.dumps(output, indent=2, ensure_ascii=False) + "\n")
+def main():
+    # Windows consoles default to cp1252, which cannot encode emoji icons.
+    # Reconfigure stdout to UTF-8 at startup so every write is safe.
+    if sys.platform == "win32":
+        sys.stdout.reconfigure(encoding="utf-8")
+    ...
 ```
 
 **Alternative (no code change)** — set the environment variable before running:

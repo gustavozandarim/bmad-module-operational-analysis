@@ -5,6 +5,13 @@ All notable changes to the Operational Analysis Method (OAM) module are document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-05-21
+
+### Fixed
+
+- UTF-8 crash on Windows cp1252: `resolve_customization.py` now calls `sys.stdout.reconfigure(encoding="utf-8")` on win32 at startup — no `PYTHONIOENCODING` workaround needed.
+- Owen cold-start: `oam-setup` is now auto-invoked when the memory tree is missing, eliminating the manual setup step for new installations.
+
 ## [1.0.0] - 2026-05-21
 
 ### Added
@@ -33,4 +40,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Config path:** consolidated all agents and workflows to load `_bmad/config.yaml` (+ `_bmad/config.user.yaml`, root core + `oam:` section) instead of a per-module config file.
 - **Help registry:** corrected the `module-help.csv` header columns to `after` / `before` (the schema required by both `merge-help-csv.py` and the module validator).
 
+[1.0.1]: https://github.com/gustavozandarim/bmad-module-operational-analysis/releases/tag/v1.0.1
 [1.0.0]: https://github.com/gustavozandarim/bmad-module-operational-analysis/releases/tag/v1.0.0

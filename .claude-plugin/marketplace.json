@@ -21,7 +21,7 @@
       "name": "oam",
       "source": "./",
       "description": "A standalone BMad module that brings the BMad Method's rigor to operational and analytical work - turning scattered operational data into structured, defensible analyses through diagnosis, planning, structuring, and execution with specialized agents and adversarial review.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Gustavo Zandarim",
         "url": "https://github.com/gustavozandarim"
