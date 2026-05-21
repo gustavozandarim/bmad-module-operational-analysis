@@ -5,6 +5,12 @@ All notable changes to the Operational Analysis Method (OAM) module are document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-05-21
+
+### Fixed
+
+- `module-help.csv` header schema: restored the `preceded-by` / `followed-by` columns expected by the BMad help system (the installer's `bmad-help` reader, the shared `_bmad/module-help.csv` registry, and the module template). The v1.0.0 change to `after` / `before` was a regression — those names only appear as a never-triggered fallback default in `merge-help-csv.py`, so on a real install the ordering hints failed to wire up.
+
 ## [1.0.1] - 2026-05-21
 
 ### Fixed
@@ -40,5 +46,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Config path:** consolidated all agents and workflows to load `_bmad/config.yaml` (+ `_bmad/config.user.yaml`, root core + `oam:` section) instead of a per-module config file.
 - **Help registry:** corrected the `module-help.csv` header columns to `after` / `before` (the schema required by both `merge-help-csv.py` and the module validator).
 
+[1.0.2]: https://github.com/gustavozandarim/bmad-module-operational-analysis/releases/tag/v1.0.2
 [1.0.1]: https://github.com/gustavozandarim/bmad-module-operational-analysis/releases/tag/v1.0.1
 [1.0.0]: https://github.com/gustavozandarim/bmad-module-operational-analysis/releases/tag/v1.0.0

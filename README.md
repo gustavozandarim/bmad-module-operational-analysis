@@ -1,6 +1,6 @@
 # Operational Analysis Method (OAM)
 
-![version](https://img.shields.io/badge/version-1.0.1-blue)
+![version](https://img.shields.io/badge/version-1.0.2-blue)
 ![BMad module](https://img.shields.io/badge/BMad-module-6E40C9)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![status](https://img.shields.io/badge/validated-VM%20PASS-brightgreen)
